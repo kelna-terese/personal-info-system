@@ -1,0 +1,84 @@
+:root{
+  --maroon: #5A0A29;
+  --beige:  #F9E7D3;
+}
+
+/* Page background and base font */
+body {
+  background-color: var(--beige);
+  color: #222;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Maroon navbar */
+.navbar-custom {
+  background-color: var(--maroon) !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+
+  /* 👇 this makes navbar broader (taller) */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.navbar-custom .navbar-brand {
+  color: #fff !important;
+  font-weight: 700;
+
+  /* 👇 changes font style of "PIS" */
+  font-family: 'Cinzel Decorative',cursive;   /* you can replace with another font */
+  font-size: 3rem;               /* makes it bigger */
+  letter-spacing: 1px;             /* adds spacing */
+}
+
+.navbar-custom .nav-link {
+  color: #fff !important;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 4px; /* helps hover look neat */
+  margin-right: 50px;
+  font-size: 18px;
+}
+
+/* 👇 Hover effect for navbar links */
+.navbar-custom .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* transparent white */
+  color: #fff !important; /* keep text white */
+}
+
+/* Small card tweak (optional) */
+.card {
+  border-radius: 8px;
+  border: 0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
+
+/* Buttons use maroon as primary */
+.btn-primary {
+  background-color: var(--maroon);
+  border-color: var(--maroon);
+}
+/* Change font style of form labels */
+label {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+/* Smooth transition for all buttons */
+.btn {
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Enlarge Save button slightly on hover */
+.btn-primary:hover {
+  transform: scale(1.08);  /* makes it 8% bigger */
+  background-color: #8B0000; /* optional: color change */
+  border-color: #8B0000;
+}
+
+/* Enlarge View All button slightly on hover */
+.btn-outline-secondary:hover {
+  transform: scale(1.08);
+}
