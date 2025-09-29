@@ -1,0 +1,10 @@
+venv/
+_pycache_/
+*.pyc
+*.pyo
+*.pyd
+.PIS.db
+PIS.db
+instance/
+.vscode/
+.env
