@@ -59,26 +59,27 @@
     </tr>
   </thead>
   <tbody>
-    {% for row in rows %}
-    <tr>
-      <td>{{ loop.index }}</td> <!-- auto numbering -->
-      <td>{{ row[1] }}</td>
-      <td>{{ row[2] or '' }}</td>
-      <td>{{ row[4] or '' }}</td>
-      <td>{{ row[3] or '' }}</td>
-      <td>{{ row[5] or '' }}</td>
-      <td>{{ row[6] or '' }}</td>
-      <td>{{ row[7] or '' }}</td>
-      <td>{{ row[9] or '' }}</td>
-      <td>{{ row[10] or '' }}</td>
-      <td>
-        <a href="{{ url_for('edit', id=row[0]) }}" class="btn btn-sm btn-warning">Edit</a>
-        <form action="{{ url_for('delete_record', id=row[0]) }}" method="post" style="display:inline;">
-          <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-        </form>
-      </td>
-    </tr>
-    {% endfor %}
+  {% for row in rows %}
+  <tr>
+    <!-- Instead of loop.index -->
+    <td>{{ loop.length - loop.index0 }}</td>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] or '' }}</td>
+    <td>{{ row[4] or '' }}</td>
+    <td>{{ row[3] or '' }}</td>
+    <td>{{ row[5] or '' }}</td>
+    <td>{{ row[6] or '' }}</td>
+    <td>{{ row[7] or '' }}</td>
+    <td>{{ row[9] or '' }}</td>
+    <td>{{ row[10] or '' }}</td>
+    <td>
+      <a href="{{ url_for('edit', id=row[0]) }}" class="btn btn-sm btn-warning">Edit</a>
+      <form action="{{ url_for('delete_record', id=row[0]) }}" method="post" style="display:inline;">
+        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
 </tbody>
 </table>
 </div>
