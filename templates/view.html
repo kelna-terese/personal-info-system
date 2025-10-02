@@ -61,7 +61,7 @@
   <tbody>
     {% for row in rows %}
     <tr>
-      <td>{{ row[0] }}</td>
+      <td>{{ loop.index }}</td> <!-- auto numbering -->
       <td>{{ row[1] }}</td>
       <td>{{ row[2] or '' }}</td>
       <td>{{ row[4] or '' }}</td>
@@ -79,7 +79,7 @@
       </td>
     </tr>
     {% endfor %}
-  </tbody>
+</tbody>
 </table>
 </div>
     </div>

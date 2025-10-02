@@ -110,6 +110,5 @@ def edit(id):
     person = cur.fetchone()
     conn.close()
     return render_template('edit.html', person=person)
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
