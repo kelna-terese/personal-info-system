@@ -1,17 +1,21 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Personal Info - View</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap CSS -->
+  <title>Personal Information System</title>
+
+  <!-- Bootstrap CSS (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Your custom CSS -->
+
+  <!-- Custom CSS (from Flask static folder) -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- Google font you use -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Navbar -->
+ <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container">
       <a class="navbar-brand" href="/">PIS</a>
@@ -23,42 +27,63 @@
       </div>
     </div>
   </nav>
-
   <div class="container mt-5">
-    <div class="card p-3">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h4 class="mb-0">All Records</h4>
-        <a href="/" class="btn btn-primary btn-sm">Add New</a>
-      </div>
+  <div class="card p-4">
+    {% if mode == "latest" %}
+  <h3 class="mb-3">Latest Record</h3>
+{% else %}
+  <h3 class="mb-3">All Records</h3>
+{% endif %}
 
-      <div class="table-responsive">
-        <table class="table table-bordered align-middle">
-          <thead>
-            <tr>
-              <th>ID</th><th>Name</th><th>Age</th><th>Email</th><th>Phone</th><th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for row in persons %}
-            <tr>
-              <td>{{ row[0] }}</td>
-              <td>{{ row[1] }}</td>
-              <td>{{ row[2] or '' }}</td>
-              <td>{{ row[3] or '' }}</td>
-              <td>{{ row[4] or '' }}</td>
-              <td>
-                <form action="/delete/{{ row[0] }}" method="post" style="display:inline;">
-                  <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                </form>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="mb-0">Saved Persons</h5>
+      <a href="/" class="btn btn-primary btn-sm">+ Add New</a>
+    </div>
+
+    <div class="table-responsive">
+      <!-- table goes here -->
+<table class="table-custom">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Blood Group</th>
+      <th>Height (cm)</th>
+      <th>Weight (kg)</th>
+      <th>Emergency Contact Name</th>
+      <th>Emergency Contact Phone</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in rows %}
+    <tr>
+      <td>{{ row[0] }}</td>
+      <td>{{ row[1] }}</td>
+      <td>{{ row[2] or '' }}</td>
+      <td>{{ row[4] or '' }}</td>
+      <td>{{ row[3] or '' }}</td>
+      <td>{{ row[5] or '' }}</td>
+      <td>{{ row[6] or '' }}</td>
+      <td>{{ row[7] or '' }}</td>
+      <td>{{ row[9] or '' }}</td>
+      <td>{{ row[10] or '' }}</td>
+      <td>
+        <a href="{{ url_for('edit', id=row[0]) }}" class="btn btn-sm btn-warning">Edit</a>
+        <form action="{{ url_for('delete_record', id=row[0]) }}" method="post" style="display:inline;">
+          <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
